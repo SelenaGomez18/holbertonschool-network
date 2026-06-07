@@ -1,17 +1,5 @@
 #!/usr/bin/env bash
-# Change your home IP
+#Change IP
 
-TMP_FILE="/tmp/hosts"
-
-sed 's/127.0.0.1 localhost/127.0.0.2 localhost/' /etc/hosts > "$TMP_FILE"
-
-if grep -q "facebook.com" "$TMP_FILE"
-then
-    sed 's/.*facebook.com/8.8.8.8 facebook.com/' "$TMP_FILE" > "${TMP_FILE}.new"
-    mv "${TMP_FILE}.new" "$TMP_FILE"
-else
-    echo "8.8.8.8 facebook.com" >> "$TMP_FILE"
-fi
-
-cat "$TMP_FILE" > /etc/hosts
-rm "$TMP_FILE"
+echo "127.0.0.2 localhost" > /etc/hosts
+echo "8.8.8.8 facebook.com" >> /etc/hosts
